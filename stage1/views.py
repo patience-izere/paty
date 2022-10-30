@@ -1,11 +1,14 @@
+from django.http import JsonResponse
 from django.shortcuts import render
-from rest_framework import generics
-
-from .models import zuriModel
-from .serializers import ZuriSerializer
 
 
 # Create your views here.
-class backendTask(generics.ListAPIView):
-    queryset = zuriModel.objects.all()
-    serializer_class = ZuriSerializer
+def zuri_api(request):
+    return JsonResponse(
+        {
+            "slackUsername": "itsweshy", 
+            "backend": "true",
+            "age": 25,
+            "bio": "Hooked on continuous self-improvement, open to new exciting opportunities and passionate about the Django backend space"
+        }
+    )
